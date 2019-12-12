@@ -1,0 +1,20 @@
+- name: Configure Node VM
+  hosts: azure
+  user: azureadmin
+  become: yes
+
+  vars:
+    myResourceGroup: coursework2
+    myVM: ansible-node
+
+  tasks:
+  - name: Copy configuration script to Node
+    copy:
+     src: ./configuration.sh
+     dest: /home/azureadmin/configuration.sh
+
+  - name: Edit Permissions
+    command: chmod +x configuration.sh
+
+  - name: Run config Script
+    command: ./configuration

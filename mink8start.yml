@@ -1,0 +1,21 @@
+  
+- name: Configure Node VM
+  hosts: azure
+  user: azureuser
+  become: yes
+
+  vars:
+    myResourceGroup: devops
+    myVM: ansible-node
+
+  tasks:
+  - name: Copy start.sh to Node
+    copy:
+     src: ./start.sh
+     dest: /home/azureadmin/start.sh
+
+  - name: Edit Permissions
+    command: chmod +x start.sh
+
+  - name: Deploy Container
+    command: ./start.sh
