@@ -12,7 +12,7 @@
   - name: Copy start.sh to Node
     copy:
      src: ./start.sh
-     dest: /home/azureadmin/start.sh
+     dest: /home/azureuser/start.sh
 
   - name: Edit Permissions
     command: chmod +x start.sh

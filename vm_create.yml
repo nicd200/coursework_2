@@ -10,7 +10,7 @@
     myNIC: ansible-node-nic
     myNetworkSecurityGroup: ansible-node-nsg
     myVM: ansible-node
-    mySSHkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcY80FLClkmzOO9MNz/qsrd69DflhvXGizjBFf+F40yffAJoHx+uzpM5y/vZPeIFvJW+cS8zXjo+791PlROi08cp/A2zV9CeSImna3CamekhwtTzUsbq9YMneveAKCsH/e+GOIG3y7rhyib1Uw/2lED2/OYwmTMMfVyNtHA9CSS/f9+JoPp69D0JzQ+JcjZMj2WWql/K+px7Q1RB5HzdYOr9bi46TFHy1Fdkzqe/ry4LtTvSbrh7gjTYffEivnRc9Q4J+0wJRah+VQkogbFuavaYgO3z1jSkVDK2oi3q/+WVVdu4lEDU3cHcxa2lXeYHMU1uTUHpaV6OxdjMISpBXX nic@VM
+    mySSHkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDpkFFxiw/j7NdqMan+2w2pfxfj+JW73eSQIDNWpJeCPd+xhQjXNJ5PCkk2jfz/YjbAXjPn5oU0rb6K6P0aprUvZPvaC2H60qd83oMMyg9yW6YvFa5rbAIwyieSfFghsZ6kUsW9Uk9z1CHcsLWOoQyLYgf01NXoDFRAYHz08hX9GjuTR6ZqZsQHKw/XpdaZUWPnQrOTHsr/efLCp6X83lz7b3J1jdTypkz9OZJ5MVkztkc0eJfZUpvkLe3BebKtCXVTq7y8Wsf3CScJ7ZdTqhzx8C7NIzBIOKJZ7lXlvhzgyV4VLrZEyQU1u4yRxenWvhzEx/2tflPBPMcGMQ2969mx nic@coursework2VM
 
   tasks:
   - name: Create virtual network
@@ -45,14 +45,14 @@
           priority: 1001
           direction: Inbound
 
-        - name: 8080
+        - name: Jenkins
           protocol: Tcp
           destination_port_range: 8080
           access: Allow
           priority: 1010
           direction: Inbound
 
-        - name: 9000
+        - name: SonarQube
           protocol: Tcp
           destination_port_range: 9000
           access: Allow
