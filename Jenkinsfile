@@ -1,4 +1,10 @@
+
 pipeline{
+environment {
+registry = "nicd200/serverjs"
+registryCredential = 'dockerhub'
+dockerImage = ''
+}
     agent any
     stages{
         stage ('build'){
@@ -6,6 +12,7 @@ pipeline{
                 echo 'build'
             }
         }
+
       stage('Static Analysis') {
     environment {
         scannerHome = tool 'SonarQube'
@@ -19,9 +26,14 @@ pipeline{
         }
     }
 }
-        stage ('deploy'){
+        stage ('Image Deploy'){
             steps{
-                echo 'deploy'
+             script {
+		dockerImage = docker.build registry + ":v1"
+		docker.withRegistry( '', registryCredential ) {
+		dockerImage.push()
+		}
+		}
             }
         }
     }
