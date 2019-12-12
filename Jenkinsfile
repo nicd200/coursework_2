@@ -1,15 +1,5 @@
-pipeline{
-    agent any
-
-    stages{
-    stage('Build'){
-     agent{docker {image 'node:6.3' }}
-        steps{
-
-             sh'node server.js'
-
-        }
-    }
+pipeline {
+	agent any
 
             stage('Sonarqube') {
 
@@ -28,4 +18,4 @@ pipeline{
                       }
 	}	
 }
-}
+
