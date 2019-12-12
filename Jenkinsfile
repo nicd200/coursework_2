@@ -1,7 +1,7 @@
 
 pipeline{
 environment {
-registry = "nicd200/serverjs"
+registry = "nic6/serverjs"
 registryCredential = 'dockerhub'
 dockerImage = ''
 }
