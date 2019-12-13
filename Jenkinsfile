@@ -29,7 +29,7 @@ dockerImage = ''
         stage (' Build and Push Image'){
 	steps{
              script {
-		dockerImage = docker.build registry + ":v1"
+		dockerImage = docker.build registry + ":v2"
 		docker.withRegistry( '', registryCredential ) {
 		dockerImage.push()
 		}
