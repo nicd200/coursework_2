@@ -29,7 +29,7 @@ dockerImage = ''
         stage (' Build and Push Image'){
 	steps{
              script {
-		dockerImage = docker.build registry + ":v3"
+		dockerImage = docker.build registry + ":v4"
 		docker.withRegistry( '', registryCredential ) {
 		dockerImage.push()
 		}
@@ -38,7 +38,7 @@ dockerImage = ''
         }
 	stage ('Deploy Image'){
 	steps {
-		sh 'ssh -t azureuser@52.168.52.239 kubectl set image deployments/serverjs serverjs=nic6/serverjs:v3'
+		sh 'ssh -t azureuser@52.168.52.239 kubectl set image deployments/serverjs serverjs=nic6/serverjs:v4'
 		}
 	}	
     }
