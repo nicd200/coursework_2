@@ -17,7 +17,7 @@ dockerImage = ''
     environment {
         scannerHome = tool 'SonarQube'
     }
-    steps {
+	steps {
         withSonarQubeEnv('SonarQube') {
             sh "${scannerHome}/bin/sonar-scanner"
         }
@@ -26,8 +26,8 @@ dockerImage = ''
         }
     }
 }
-        stage ('Image Deploy'){
-            steps{
+        stage (' Build and Push Image'){
+	steps{
              script {
 		dockerImage = docker.build registry + ":v1"
 		docker.withRegistry( '', registryCredential ) {
@@ -36,5 +36,10 @@ dockerImage = ''
 		}
             }
         }
+	stage ('Deploy Image'){
+	steps {
+		sh 'ssh -t azureuser@52.168.52.239 kubectl image deployments/serverjs serverjs=nic6/serverjs:v1
+		}
+	}	
     }
 }
