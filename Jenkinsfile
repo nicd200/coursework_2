@@ -38,7 +38,7 @@ dockerImage = ''
         }
 	stage ('Deploy Image'){
 	steps {
-		sh 'ssh -t azureuser@52.168.52.239 kubectl image deployments/serverjs serverjs=nic6/serverjs:v2
+		sh 'ssh -t azureuser@52.168.52.239 kubectl image deployments/serverjs serverjs=nic6/serverjs:v2'
 		}
 	}	
     }
